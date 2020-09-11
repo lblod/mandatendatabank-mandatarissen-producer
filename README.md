@@ -67,6 +67,7 @@ The following enviroment variables can be optionally configured:
 * `DELTA_INTERVAL (in ms, default: 1000)`: interval to keep generated delta's in an in-memory cache before writing to a file
 * `LOG_INCOMING_DELTA (default: "false")`: log the delta message as received from the delta-notifier to the console
 * `RELATIVE_FILE_PATH (default: "deltas")`: relative path of the delta files compared to the root folder of the file service that will host the files.
+* `FILE_GRAPH (default: "http://mu.semte.ch/application")`: graph on which the file data should be saved in the database.
 
 ### API
 #### POST /delta
