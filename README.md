@@ -64,8 +64,10 @@ docker-compose up -d
 ### Configuration
 #### Environment variables
 The following enviroment variables can be optionally configured:
-* `DELTA_INTERVAL (in ms, default: 1000)`: interval to keep generated delta's in an in-memory cache before writing to a file
-* `LOG_INCOMING_DELTA (default: "false")`: log the delta message as received from the delta-notifier to the console
+* `DELTA_INTERVAL (in ms, default: 1000)`: interval to keep generated delta's in an in-memory cache before writing to a file.
+* `LOG_INCOMING_DELTA (default: "false")`: log the delta message as received from the delta-notifier to the console.
+* `LOG_OUTGOING_DELTA (default: "false")`: log the resulting delta message that will be written to the diff file to the console.
+* `LOG_DELTA_REWRITE (default: "false")`: verbose log output during the rewrite of the incoming delta to the resulting delta. Only useful for debugging purposes.
 * `RELATIVE_FILE_PATH (default: "deltas")`: relative path of the delta files compared to the root folder of the file service that will host the files.
 * `FILE_GRAPH (default: "http://mu.semte.ch/application")`: graph on which the file data should be saved in the database.
 
