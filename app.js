@@ -26,10 +26,15 @@ app.post('/delta', async function(req, res) {
     console.log(`Receiving delta ${JSON.stringify(file.delta)}`);
 
   await enrichDeltaFile(file);
-  if (LOG_OUTGOING_DELTA) {
-    console.log(`Receiving delta ${JSON.stringify(file.delta)}`);
+  if(!file.isEmpty) {
+    if (LOG_OUTGOING_DELTA) {
+      console.log(`Outgoing delta ${JSON.stringify(file.delta)}`);
+    }
+    await file.writeToDisk();
+  } else {
+    console.log("Delta did not contain any triples off interest, nothing saved to disk.")
   }
-  await file.writeToDisk();
+
   res.status(202).send();
 });
 
