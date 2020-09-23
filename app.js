@@ -1,11 +1,8 @@
 import { app, errorHandler } from 'mu';
 import bodyParser from 'body-parser';
 import DeltaFile from './lib/delta-file.js';
-import { APP_NAME, DELTA_INTERVAL, LOG_INCOMING_DELTA, LOG_OUTGOING_DELTA } from './lib/config';
+import { APP_NAME,  LOG_INCOMING_DELTA, LOG_OUTGOING_DELTA } from './lib/config';
 import { enrichDeltaFile } from './lib/producer';
-
-const cache = new DeltaFile();
-let hasTimeout = null;
 
 // --- CONFIGURATION ---
 
@@ -23,13 +20,16 @@ app.get('/', function(req, res) {
 });
 
 app.post('/delta', async function(req, res) {
-  const deltaFile = new DeltaFile(req);
+  const file = new DeltaFile(req);
 
   if (LOG_INCOMING_DELTA)
-    console.log(`Receiving delta ${JSON.stringify(deltaFile.delta)}`);
+    console.log(`Receiving delta ${JSON.stringify(file.delta)}`);
 
-  await enrichDeltaFile(deltaFile);
-  await deltaFile.writeToDisk()
+  await enrichDeltaFile(file);
+  if(LOG_OUTGOING_DELTA) {
+    console.log(`Receiving delta ${JSON.stringify(file.delta)}`);
+  }
+  await file.writeToDisk()
   res.status(202).send();
 });
 
