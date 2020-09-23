@@ -1,7 +1,7 @@
 import { app, errorHandler } from 'mu';
 import bodyParser from 'body-parser';
 import DeltaFile from './lib/delta-file.js';
-import { APP_NAME,  LOG_INCOMING_DELTA, LOG_OUTGOING_DELTA } from './lib/config';
+import { APP_NAME, LOG_INCOMING_DELTA, LOG_OUTGOING_DELTA } from './lib/config';
 import { enrichDeltaFile } from './lib/producer';
 
 // --- CONFIGURATION ---
@@ -26,10 +26,10 @@ app.post('/delta', async function(req, res) {
     console.log(`Receiving delta ${JSON.stringify(file.delta)}`);
 
   await enrichDeltaFile(file);
-  if(LOG_OUTGOING_DELTA) {
+  if (LOG_OUTGOING_DELTA) {
     console.log(`Receiving delta ${JSON.stringify(file.delta)}`);
   }
-  await file.writeToDisk()
+  await file.writeToDisk();
   res.status(202).send();
 });
 
