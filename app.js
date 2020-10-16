@@ -6,7 +6,9 @@ import { enrichDeltaFile } from './lib/producer';
 
 // --- CONFIGURATION ---
 
+// delta notifier can receive and send-out payloads to a size up to 500mb
 app.use(bodyParser.json({
+  limit: '500mb',
   type: function(req) {
     return /^application\/json/.test(req.get('content-type'));
   },
