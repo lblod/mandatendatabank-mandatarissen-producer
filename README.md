@@ -1,6 +1,6 @@
 # [DEPRECATED] mandatendatabank-mandatarissen-producer
 
-*NOTE*: This addon is replaced bu the more configurable [simple-delta-file-producer](https://github.com/lblod/simple-delta-file-producer)
+*NOTE*: This addon is replaced by the more configurable service [simple-delta-file-producer](https://github.com/lblod/simple-delta-file-producer)
 
 ----------------------------------------------------------------------------------------------------
 
