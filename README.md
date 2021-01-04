@@ -1,4 +1,8 @@
-# mandatendatabank-mandatarissen-producer
+# [DEPRECATED] mandatendatabank-mandatarissen-producer
+
+*NOTE*: This addon is replaced by the more configurable service [simple-delta-file-producer](https://github.com/lblod/simple-delta-file-producer)
+
+----------------------------------------------------------------------------------------------------
 
 Producer service generating diff files to sync data about mandatees to external applications.
 Diff files generated since a specific timestamp can be fetched by a consuming service 
